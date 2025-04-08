@@ -10,7 +10,7 @@ This program should work on any system with `gcc` installed.
 To compile the program, you can use the following `gcc` command:
 
 ```bash
-gcc -o matrix_multiplication matrix_multiplication.c
+gcc -o matrix_research MatrixResearch.c
 ```
 
 This will generate an executable file named `matrix_multiplication`.
@@ -20,9 +20,8 @@ This will generate an executable file named `matrix_multiplication`.
 After compiling, you can run the program with the following command:
 
 ```bash
-./matrix_multiplication <matrix_number> <matrix_size>
+./matrix_research.exe <matrix_number> <matrix_size>
 ```
-
 ### Parameters:
 - `<matrix_number>`: Choose a matrix multiplication strategy (1 to 6). Each number corresponds to a different method of multiplying matrices:
   - `1`: Standard triple nested loop.
@@ -41,14 +40,20 @@ This command will run the program using matrix multiplication strategy 1 on `3x3
 ./matrix_multiplication 1 3
 ```
 
-## Explanation of Matrix Multiplication Functions
+## Measuring Execution Time
 
-The program defines six matrix multiplication strategies:
-
-- **`matrixMultiplication1`**: Standard triple nested loop.
-- **`matrixMultiplication2`**: Loops rearranged to optimize cache.
-- **`matrixMultiplication3`**: Intermediate variables used to store values.
-- **`matrixMultiplication4`**: Loop ordering optimized for better memory access patterns.
-- **`matrixMultiplication5`**: Transpose the second matrix for improved cache utilization.
-- **`matrixMultiplication6`**: Similar to `matrixMultiplication5`, but with different loop orders.
+To measure execution time, you can use Cygwin and type the following command:
+```bash
+time ./matrix_multiplication 1 3
 ```
+
+This will output the real time, user CPU time, and system CPU time taken by the program to execute.
+```
+$ time ./matrix_research.exe 1 1000
+
+real    0m2.810s
+user    0m2.765s
+sys     0m0.046s
+```
+
+The exact result depends on the multiplication strategy chosen. All strategies will produce the same result, but they may optimize the order and method of iteration over the matrices, improving performance.
